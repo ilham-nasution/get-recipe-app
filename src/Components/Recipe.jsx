@@ -4,8 +4,9 @@ import axios from "axios";
 
 const Recipe = () => {
   const { id } = useParams();
-  const [recipe, setRecipe] = useState({});
-  const [ingredients, setIngredients] = useState([]);
+  const [recipe, setRecipe] = useState({
+    extendedIngredients: [],
+  });
 
   useEffect(() => {
     const fetchRecipe = async () => {
@@ -13,7 +14,6 @@ const Recipe = () => {
         `https://api.spoonacular.com/recipes/${id}/information?apiKey=541436aa58c2400e94d3d976aeac8f84`
       );
       setRecipe(result.data);
-      setIngredients(result.data.extendedIngredients);
     };
     fetchRecipe();
   }, [id]);
@@ -25,7 +25,7 @@ const Recipe = () => {
         <h1>{recipe.title}</h1>
         <h5>Ready in {recipe.readyInMinutes} minutes</h5>
         <ul>
-          {ingredients.map((ingredient) => (
+          {recipe.extendedIngredients.map((ingredient) => (
             <li key={ingredient.id}>{ingredient.original}</li>
           ))}
         </ul>
