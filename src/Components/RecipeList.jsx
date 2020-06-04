@@ -29,7 +29,7 @@ const Homepage = () => {
       </div>
       <div className="row flex-center child-borders">
         {data.map((recipe) => (
-          <div key={recipe.id} className="col-3 col margin">
+          <div key={recipe.id} className="sm-3 col margin">
             <img src={recipe.image} alt="food" />
 
             <div className="card-body">

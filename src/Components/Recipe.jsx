@@ -31,7 +31,7 @@ const Recipe = () => {
       <div className="row">
         <div className="col">
           <img src={recipe.image} alt="food" />
-          <h1>{recipe.title}</h1>
+          <h2>{recipe.title}</h2>
           <h5>Ready in {recipe.readyInMinutes} minutes</h5>
           <ul>
             {recipe.extendedIngredients.map((ingredient) => (
