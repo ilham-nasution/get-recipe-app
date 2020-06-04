@@ -5,6 +5,7 @@ import { RotateSpinner } from "react-spinners-kit";
 import axios from "axios";
 
 const Homepage = () => {
+  const API_KEY = process.env.REACT_APP_RECIPE_API_KEY;
   const { ingredient } = useParams();
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -13,13 +14,13 @@ const Homepage = () => {
     const fetchData = async () => {
       setIsLoading(true);
       const result = await axios(
-        `https://api.spoonacular.com/recipes/findByIngredients?apiKey=541436aa58c2400e94d3d976aeac8f84&ingredients=${ingredient}&number=12`
+        `https://api.spoonacular.com/recipes/findByIngredients?apiKey=${API_KEY}&ingredients=${ingredient}&number=12`
       );
       setData(result.data);
       setIsLoading(false);
     };
     fetchData();
-  }, [ingredient]);
+  }, [API_KEY, ingredient]);
 
   return (
     <React.Fragment>

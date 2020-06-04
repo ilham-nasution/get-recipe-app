@@ -4,6 +4,7 @@ import { RotateSpinner } from "react-spinners-kit";
 import axios from "axios";
 
 const Recipe = () => {
+  const API_KEY = process.env.REACT_APP_RECIPE_API_KEY;
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [recipe, setRecipe] = useState({
@@ -14,13 +15,13 @@ const Recipe = () => {
     const fetchRecipe = async () => {
       setIsLoading(true);
       const result = await axios(
-        `https://api.spoonacular.com/recipes/${id}/information?apiKey=541436aa58c2400e94d3d976aeac8f84`
+        `https://api.spoonacular.com/recipes/${id}/information?apiKey=${API_KEY}`
       );
       setRecipe(result.data);
       setIsLoading(false);
     };
     fetchRecipe();
-  }, [id]);
+  }, [API_KEY, id]);
 
   return (
     <React.Fragment>
