@@ -13,13 +13,14 @@ const Recipe = () => {
       const result = await axios(
         `https://api.spoonacular.com/recipes/${id}/information?apiKey=541436aa58c2400e94d3d976aeac8f84`
       );
+      debugger;
       setRecipe(result.data);
     };
     fetchRecipe();
   }, [id]);
 
   return (
-    <div className="row flex-center">
+    <div className="row">
       <div className="col">
         <img src={recipe.image} alt="food" />
         <h1>{recipe.title}</h1>

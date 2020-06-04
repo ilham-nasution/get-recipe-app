@@ -25,7 +25,7 @@ const Homepage = () => {
 
           <div className="card-body">
             <p className="card-title">{recipe.title}</p>
-            <Link to={`/recipe/${recipe.id}`} className="btn-small">
+            <Link to={`/recipes/detail/${recipe.id}`} className="btn-small">
               Recipe detail
             </Link>
           </div>
